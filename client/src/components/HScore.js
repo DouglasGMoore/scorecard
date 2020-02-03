@@ -4,7 +4,7 @@ class HScore extends React.Component{
 render(){
     return(
         <div>
-           <h2> HOME: {this.props.hScore}</h2>
+           <h1>{this.props.hScore}</h1>
         </div>
     )
 }
