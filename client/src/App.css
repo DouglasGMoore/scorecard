@@ -1,42 +1,44 @@
 #App{
-  
+  display:flex;
   text-align: center;
 }
 #scoreboard{
+  width: 1600px;
   display:flex;
   margin: 0px auto;
   height:100px;
   background: grey;
-  justify-content: center;
+  justify-content: space-between;
 }
-#home{
+.home{
   display: flex;
-  height: 200px;
-  width: 200px;
-  background-color: lightgreen;;
+  height: 94px;
+  width: 194px;
+  background-color: green;
+  border: 3px solid black;
 }
-#away{
+.away{
   display: flex;
   background-color: red;
-  height: 200px;
-  width: 200px;
+  height: 94px;
+  width: 194px;
+  border: 3px solid black;
 }
 #scoring{
   display: flex;
   margin: 0px auto;
-  background-color: lightgray;
-  height: 400px;
+  justify-content: center;
 }
-#homeS{
+.homeS{
   display: flex;
-  height:200px;
+  height:150px;
   width: 600px;
   background-color: lightgreen;
 }
-#awayS{
+.awayS{
   display: flex;
-  height:200px;
-  width: 600px;
+  height:150px;
+  width:600px;
   background-color: lightpink;
 }
 button{
@@ -45,21 +47,22 @@ button{
   width: 50px;
   margin: 5px;
   background-color: black;
-
 }
 #awayBut{
+  padding-top: 10px;
+  text-align: center;
+  display: block;
   flex-direction: column;
-  height: 400px;
+  height: 440px;
   width: 200px;
-  display: flex;
   background-color: red;
-  float: right;
 }
 #homeBut{
+  padding-top: 10px;
+  text-align: center;
+  display: block;
   flex-direction: column;
-  height: 400px;
+  height: 440px;
   width: 200px;
-  display: flex;
   background-color: green;
-  float: left;
 }

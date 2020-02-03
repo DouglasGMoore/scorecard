@@ -4,7 +4,7 @@ class AScoring extends React.Component{
 render(){
     return(
         <div>
-            <h1>AWAY: {this.props.aScoring}</h1>
+            <h1>{this.props.aScoring}</h1>
         </div>
     )
 }

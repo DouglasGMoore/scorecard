@@ -5,7 +5,7 @@ render(){
     return(
         <div>
             <h1>
-                HOME: {this.props.hScoring}</h1>
+               {this.props.hScoring}</h1>
         </div>
        
     )

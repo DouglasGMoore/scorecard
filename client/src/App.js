@@ -7,6 +7,8 @@ import HPlaque from './components/HPlaque'
 import AScoring from './components/AScoring'
 import HScoring from './components/HScoring'
 import Buttons from './components/Buttons'
+import HomeButtons from './components/HomeButtons'
+
 
 class App extends React.Component {
   constructor(props){
@@ -14,7 +16,8 @@ class App extends React.Component {
     this.state={
       hName:'Darien',
       aName:'Visitor',
-     aScore: 0,
+      
+     aScore:0,
      hScore:0,
      aScoring:[],
      hScoring:[]
@@ -91,22 +94,33 @@ class App extends React.Component {
     return (
       <div className="App">
         <div id ='scoreboard'>
-          <HPlaque hName={this.state.hName}/>
+        <div className = 'home'><HScore hScore={this.state.hScore} /></div>
+        <HPlaque hName={this.state.hName}/>
+
           <APlaque aName={this.state.aName}/>
+          
+          <div className = 'away'> <AScore aScore={this.state.aScore} /></div>
+           
+
         </div>
         <div id='scoring'>
+        <HomeButtons onClick={this.onClick} />
         <div> 
-          <div id="homeS"> <HScoring hScoring={this.state.hScoring}/></div>
-          <div id = 'home'><HScore hScore={this.state.hScore} /></div>
+          <div className="homeS"><h1>RD1: </h1><HScoring hScoring={this.state.hScoring}/></div>
+          <div className="homeS"><h1>RD2: </h1></div>
+          <div className="homeS"><h1>RD3: </h1></div>
+
+          
          </div>
         <div>
-        <div id= "awayS"> <AScoring aScoring={this.state.aScoring}/></div>
-         <div id = 'away'> <AScore aScore={this.state.aScore} /></div> 
+        <div className= "awayS"><h1>RD1</h1><AScoring aScoring={this.state.aScoring}/></div>
+        <div className= "awayS"><h1>RD2</h1></div>
+        <div className= "awayS"><h1>RD3</h1></div>
         </div>
-        
+        <Buttons onClick={this.onClick}/>
          
         </div> 
-        <Buttons onClick={this.onClick}/>
+       
       </div>
     );
   }
