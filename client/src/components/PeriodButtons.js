@@ -4,11 +4,10 @@ class PeriodButtons extends React.Component{
     render(){
         return(
             <div>
-                <button>RD1</button>
-                <button>RD2</button>
-                <button>RD3</button>
-                <button>OT</button>
-
+                <button name="1" onClick={e=>this.props.changeRound(e.target.name)}>RD1</button>
+                <button name ='2' onClick={e=>this.props.changeRound(e.target.name)}>RD2</button>
+                <button name ='3' onClick={e=>this.props.changeRound(e.target.name)}>RD3</button>
+                <button name ='4' onClick={e=>this.props.changeRound(e.target.name)}>OT</button>
             </div>
         )
     }
