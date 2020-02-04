@@ -16,79 +16,51 @@ class App extends React.Component {
     this.state={
       hName:'Darien',
       aName:'Visitor',
-      
+      round: 1,
      aScore:0,
      hScore:0,
-     aScoring:[],
-     hScoring:[]
+     a:[],
+     h:[]
     }
   }
   onClick = button => {
-    if(button[0] === 'A'){
-      if(button[1] === '-'){
-        let arr = this.state.aScoring
-        let index = arr.indexOf(button[2])
-  
-        if(index > -1){
-          arr.splice(index, 1)
-          this.setState({
-          aScore: parseInt(this.state.aScore) - parseInt(button[3]),
-          aScoring: [...arr]
-        }) //end of set state
-        }//end of index if
-    }else if (button[1]==='+'){
-        let arr = [...this.state.aScoring]
-        let index = arr.indexOf(button[2])
-        if(index > -1){        
-          arr.push(button[2])
-          this.setState({
-            aScore: parseInt(this.state.aScore) + parseInt(button[3]),
-            aScoring: arr
-          })
-      } else {
-          arr.push(button[2])
-          console.log(arr)
-          this.setState({
-            aScore: parseInt(this.state.aScore) + parseInt(button[3]),
-            aScoring: arr
-          })
-      }
-        }
-    }// End of away if
-    else {
-      if(button[0] === 'H'){
-        if(button[1] === '-'){
-          let arr = this.state.hScoring
-          let index = arr.indexOf(button[2])
-    
-          if(index > -1){
+    let team = button[0].toLowerCase();
+    let score = [team]+"Score";
+    let move = button[2];
+    let pts = button[3];
+    let pom = button[1];
+    let arr = [...this.state[team]]
+    let index = arr.indexOf(move)
+    let round = this.state.round
+    console.log(team+round)
+
+    if(pom === '-'){
+        if(index > -1){// Eliminates possibilty of removing a non existatnt move
             arr.splice(index, 1)
             this.setState({
-            hScore: parseInt(this.state.hScore) - parseInt(button[3]),
-            hScoring: [...arr]
-          }) //end of set state
-          }//end of index if
-      }else if (button[1]==='+'){
-          let arr = [...this.state.hScoring]
-          let index = arr.indexOf(button[2])
-          if(index > -1){        
-            arr.push(button[2])
-            this.setState({
-              hScore: parseInt(this.state.hScore) + parseInt(button[3]),
-              hScoring: arr
-            })
-        } else {
-            arr.push(button[2])
-            this.setState({
-              hScore: parseInt(this.state.hScore) + parseInt(button[3]),
-              hScoring: arr
-            })
-        }
-          }
+            [score]: parseInt(this.state[score]) - parseInt(pts),
+            [team]: arr
+            }) //end of set state
 
-    }
-  }
-     
+        }//end of index if
+    }// End of '-' if
+    else if (pom==='+'){
+        if(index > -1){        
+            arr.push(move)
+            this.setState({
+            [score]: parseInt(this.state[score]) + parseInt(pts),
+            [team]: arr
+          })
+        } 
+        else {
+          arr.push(move)
+          // console.log(arr)
+          this.setState({
+            [score]: parseInt(this.state[score]) + parseInt(pts),
+            [team]: arr
+          })
+      }
+        } 
 }// End of onClick
   render(){
     return (
@@ -106,14 +78,14 @@ class App extends React.Component {
         <div id='scoring'>
         <HomeButtons onClick={this.onClick} />
         <div> 
-          <div className="homeS"><h1>RD1: </h1><HScoring hScoring={this.state.hScoring}/></div>
+          <div className="homeS"><h1>RD1: </h1><HScoring hScoring={this.state.h}/></div>
           <div className="homeS"><h1>RD2: </h1></div>
           <div className="homeS"><h1>RD3: </h1></div>
 
           
          </div>
         <div>
-        <div className= "awayS"><h1>RD1</h1><AScoring aScoring={this.state.aScoring}/></div>
+        <div className= "awayS"><h1>RD1</h1><AScoring aScoring={this.state.a}/></div>
         <div className= "awayS"><h1>RD2</h1></div>
         <div className= "awayS"><h1>RD3</h1></div>
         </div>
@@ -123,6 +95,6 @@ class App extends React.Component {
        
       </div>
     );
-  }
+  }// Enf of render
 }
 export default App;
